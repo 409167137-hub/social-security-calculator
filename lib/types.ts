@@ -60,6 +60,7 @@ export interface PaginationParams {
 
 // 分页响应
 export interface PaginatedResponse<T> {
+  success: boolean;
   data: T[];
   total: number;
   page: number;

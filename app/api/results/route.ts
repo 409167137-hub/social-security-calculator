@@ -50,6 +50,7 @@ export async function GET(request: NextRequest) {
     const totalPages = Math.ceil((count || 0) / limit);
 
     const response: PaginatedResponse<Result> = {
+      success: true,
       data: data || [],
       total: count || 0,
       page,
@@ -57,10 +58,7 @@ export async function GET(request: NextRequest) {
       totalPages,
     };
 
-    return NextResponse.json({
-      success: true,
-      ...response,
-    });
+    return NextResponse.json(response);
   } catch (error: any) {
     console.error('获取结果错误:', error);
     return NextResponse.json(
